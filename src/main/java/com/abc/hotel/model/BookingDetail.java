@@ -1,11 +1,16 @@
 package com.abc.hotel.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "bookingDetails")
@@ -23,8 +28,22 @@ public class BookingDetail {
 	@Column(columnDefinition = "date")
 	private String date;
 	
-	@Column(columnDefinition = "roomId")
-	private String roomId;
+	@Column(columnDefinition = "hotelRoomId")
+	private String hotelRoomId;
+
+	@ManyToOne(optional=false)
+	@JoinColumn(name="hotelRoomId", referencedColumnName="id", insertable = false, updatable = false)
+	private Hotel hotel;
+
+	@JsonIgnore
+	@JsonProperty(value = "hotelRoomId")
+	public Hotel getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
 
 	public int getId() {
 		return id;
@@ -42,12 +61,11 @@ public class BookingDetail {
 		this.date = date;
 	}
 
-	public String getRoomId() {
-		return roomId;
+	public String getHotelRoomId() {
+		return hotelRoomId;
 	}
 
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
+	public void setHotelRoomId(String hotelRoomId) {
+		this.hotelRoomId = hotelRoomId;
 	}
-	
 }

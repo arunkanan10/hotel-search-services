@@ -1,11 +1,7 @@
 package com.abc.hotel.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "hotel")
@@ -31,7 +27,18 @@ public class Hotel {
 	
 	@Column(columnDefinition = "city")
 	private String city;
-	
+
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+	private Set<BookingDetail> bookingDetails;
+
+	public Set<BookingDetail> getBookingDetails() {
+		return bookingDetails;
+	}
+
+	public void setBookingDetails(Set<BookingDetail> bookingDetails) {
+		this.bookingDetails = bookingDetails;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -25,10 +25,7 @@ public class HotelSearchController {
         
     	try {
     		
-    		String city =  request.getCity();
-    		String hotelName = request.getHotelName();
-    		int price = request.getPrice();
-    		List<Hotel> hotelList = hotelSearchRepository.search(city, hotelName);
+    		List<Hotel> hotelList = hotelSearchRepository.search(request);
     		return hotelList;
         } catch (Exception e) {
         	throw e;

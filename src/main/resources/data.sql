@@ -11,9 +11,9 @@ CREATE TABLE hotel (
 
 CREATE TABLE booking_details (
   id INT AUTO_INCREMENT  PRIMARY KEY,
-  room_id INT,
+  hotel_room_id INT,
   date VARCHAR(250) NOT NULL,
-  FOREIGN KEY (room_id) REFERENCES hotel(id)
+  FOREIGN KEY (hotel_room_id) REFERENCES hotel(id)
 );
 
 INSERT INTO hotel (room_num, hotel_name, city, price) VALUES ('101', 'HolidyInn', 'Chennai', 1000);
@@ -22,6 +22,6 @@ INSERT INTO hotel (room_num, hotel_name, city, price) VALUES ('103', 'HolidyInn'
 INSERT INTO hotel (room_num, hotel_name, city, price) VALUES ('101', 'Staybridge', 'Chennai', 1000);
 INSERT INTO hotel (room_num, hotel_name, city, price) VALUES ('104', 'Staybridge', 'Chennai', 5000);
 
-INSERT INTO booking_details (room_id, date) VALUES (1, '23-Aug-2019');
-INSERT INTO booking_details (room_id, date) VALUES (3, '24-Aug-2019');
-INSERT INTO booking_details (room_id, date) VALUES (4, '23-Aug-2019');
+INSERT INTO booking_details (hotel_room_id, date) VALUES (1, '23-Aug-2019');
+INSERT INTO booking_details (hotel_room_id, date) VALUES (3, '24-Aug-2019');
+INSERT INTO booking_details (hotel_room_id, date) VALUES (4, '23-Aug-2019');
